@@ -62,7 +62,7 @@ public class ProjectPage extends MainPage {
         super(driver);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
     }
-//TODO overide less parameter
+//TODO override less parameter
     public void createComponent(String componentName, String componentDescription, String componentAssignee){
         navigateToComponentsPage();
         componentNameInputField.sendKeys(componentName);
