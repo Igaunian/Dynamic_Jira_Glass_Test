@@ -1,8 +1,10 @@
+import com.opencsv.exceptions.CsvException;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.openqa.selenium.WebDriver;
 import util.WebDriverFactory;
 
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.util.concurrent.TimeUnit;
 
@@ -15,7 +17,7 @@ public class BaseTest {
     protected static WebDriver driver;
 
     @BeforeAll
-    public static void setUp() throws MalformedURLException {
+    public static void setUp() throws MalformedURLException, CsvException, IOException, InterruptedException {
         driver = WebDriverFactory.InitDriver(BROWSER);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
