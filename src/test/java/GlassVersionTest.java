@@ -29,25 +29,25 @@ public class GlassVersionTest extends BaseTest {
     @Test
     public void viewVersionName(){
         glassPage.navigateToVersionsTab();
-        Assertions.assertTrue(glassPage.doesVersioinExists(versionName));
+        Assertions.assertTrue(glassPage.doesVersionExist(versionName));
     }
 
     @Test
     public void viewVersionDescription(){
         glassPage.navigateToVersionsTab();
-        Assertions.assertTrue(glassPage.doesVersionDescriptionPresent(description));
+        Assertions.assertTrue(glassPage.isVersionDescriptionPresent(description));
     }
 
     @Test
     public void viewVersionStartDate(){
         glassPage.navigateToVersionsTab();
-        Assertions.assertTrue(glassPage.doesVersionStartDatePresent(startDate));
+        Assertions.assertTrue(glassPage.isVersionStartDatePresent(startDate));
     }
 
     @Test
     public void viewVersionReleaseDate(){
         glassPage.navigateToVersionsTab();
-        Assertions.assertTrue(glassPage.doesVersionReleaseDatePresent(releaseDate));
+        Assertions.assertTrue(glassPage.isVersionReleaseDatePresent(releaseDate));
     }
 
     @AfterAll

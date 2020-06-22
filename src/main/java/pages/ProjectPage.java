@@ -78,7 +78,7 @@ public class ProjectPage extends MainPage {
         deleteForSure.click();
     }
 
-    public boolean doesComponentExists(){
+    public boolean doesComponentExist(){
         try {
 //            driver.findElement(By.xpath("//table[@id=\"components-table\"]//a[contains(text(),'Very Component')]"));
             wait.until(ExpectedConditions.visibilityOf(expectedComponent)).isDisplayed();

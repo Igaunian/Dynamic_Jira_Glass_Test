@@ -47,7 +47,7 @@ public class GlassPage extends MainPage {
         versionsTab.click();
     }
 
-    public boolean doesComponentExists(String componentName){
+    public boolean doesComponentExist(String componentName){
         try {
             driver.findElement(By.xpath("//table[@id=\"components-table\"]//a[contains(text(),'" + componentName + "')]"));
             return true;
@@ -57,11 +57,11 @@ public class GlassPage extends MainPage {
     }
 
 //    TODO: Add env to xpath
-    public boolean doesComponentAssigneePresent() {
+    public boolean isComponentAssigneePresent() {
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//td[@class='components-table__name']"))).isDisplayed();
     }
 //TODO: func parameter
-    public boolean doesComponentDescriptionPresent(String componentDescription){
+    public boolean isComponentDescriptionPresent(String componentDescription){
         try {
             driver.findElement(By.xpath("//td[@class=\"glass-components-table__description\"]//div[contains(text(),'" + componentDescription + "')]"));
             return true;
@@ -70,7 +70,7 @@ public class GlassPage extends MainPage {
         }
     }
 
-    public boolean doesVersioinExists(String componentVersion){
+    public boolean doesVersionExist(String componentVersion){
         try {
             driver.findElement(By.xpath("//td[@class=\"versions-table__name\"]//div//a[contains(text(),'" + componentVersion + "')]"));
             return true;
@@ -79,7 +79,7 @@ public class GlassPage extends MainPage {
         }
     }
 
-    public boolean doesVersionStartDatePresent(String versionStartDate){
+    public boolean isVersionStartDatePresent(String versionStartDate){
         try {
             driver.findElement(By.xpath("//td[@class=\"versions-table__date_start\"]//div[contains(text(),'" + versionStartDate + "')]"));
             return true;
@@ -88,7 +88,7 @@ public class GlassPage extends MainPage {
         }
     }
 
-    public boolean doesVersionReleaseDatePresent(String versionReleaseDate) {
+    public boolean isVersionReleaseDatePresent(String versionReleaseDate) {
         try {
             driver.findElement(By.xpath("//td[@class=\"versions-table__date_release\"]//div[contains(text(),'" + versionReleaseDate + "')]"));
             return true;
@@ -97,7 +97,7 @@ public class GlassPage extends MainPage {
         }
     }
 
-    public boolean doesVersionDescriptionPresent(String versionDescription) {
+    public boolean isVersionDescriptionPresent(String versionDescription) {
         try {
             driver.findElement(By.xpath("//td[@class=\"versions-table__description\"]//div[contains(text(),'" + versionDescription + "')]"));
             return true;
