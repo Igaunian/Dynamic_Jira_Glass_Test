@@ -17,7 +17,7 @@ public class GlassComponentTest extends BaseTest {
     public static ProjectPage projectPage;
 
     @BeforeAll
-    public static void setUp() throws CsvException, IOException, InterruptedException {
+    public static void setUp() throws CsvException, IOException {
         BaseTest.setUp();
         glassPage = new GlassPage(driver);
         projectPage = new ProjectPage(driver);

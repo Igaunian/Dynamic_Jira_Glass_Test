@@ -5,9 +5,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import pages.GlassPage;
 import pages.ProjectPage;
-
 import java.io.IOException;
-import java.net.MalformedURLException;
+
 
 public class GlassVersionTest extends BaseTest {
     public static GlassPage glassPage;
@@ -19,7 +18,7 @@ public class GlassVersionTest extends BaseTest {
 
 
     @BeforeAll
-    public static void setUp() throws IOException, InterruptedException, CsvException {
+    public static void setUp() throws IOException, CsvException {
         BaseTest.setUp();
         glassPage = new GlassPage(driver);
         projectPage = new ProjectPage(driver);
