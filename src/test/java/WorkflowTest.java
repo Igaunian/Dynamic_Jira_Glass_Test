@@ -6,6 +6,9 @@ import pages.GlassPage;
 import pages.ProjectPage;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class WorkflowTest extends BaseTest {
     public static GlassPage glassPage;
@@ -21,11 +24,22 @@ public class WorkflowTest extends BaseTest {
 
     @DisplayName("Verify that the workflow appears in Glass documentation")
     @ParameterizedTest
-    @CsvFileSource(resources = "/workflow_data.csv", numLinesToSkip = 1)
-    public void workflowTest1(String page, String type, String name) {
+    @CsvFileSource(resources = "/workflowTest1_data.csv", numLinesToSkip = 1)
+    public void workflowTest1(String page, String issueType, String name) {
         projectPage.navigateToUrl(page);
-        glassPage.selectIssuetype(type);
-        Assertions.assertTrue(glassPage.checkWorkflowTransitionName(name));
+        glassPage.selectIssuetype(issueType);
+        Assertions.assertTrue(glassPage.checkWorkflowName(name));
+    }
+
+    @DisplayName("Verify that the workflow transition analysis appears in Glass documentation")
+    @ParameterizedTest
+    @CsvFileSource(resources = "/workflowTest2_data.csv", numLinesToSkip = 1)
+    public void workflowTest2(String page, String issueType, String transitions){
+        projectPage.navigateToUrl(page);
+        glassPage.selectIssuetype(issueType);
+        List<String> argumentList = new ArrayList<String>(Arrays.asList(transitions.split(",")));
+        List<String> returnedList = glassPage.checkWorkflowTransitionNames();
+        Assertions.assertEquals(argumentList, returnedList);
     }
 }
 

@@ -9,6 +9,9 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class GlassPage extends MainPage {
     private static final String componentAssignee = System.getenv("COMPONENT_ASSIGNEE");
     @FindBy(xpath = "//li[@id='glass-workflow-nav']/a")
@@ -31,6 +34,8 @@ public class GlassPage extends MainPage {
     private WebElement schemesTab;
     @FindBy(xpath = "//td[@class='components-table__name']/following-sibling::td[contains(text(),'Project Lead')]")
     private WebElement assignee;
+
+    private By workflow = By.xpath("//div[@id=\"glass-workflow-transitions\"]/table/tbody/tr/td/span/b[local-name()]");
 
     public GlassPage(WebDriver driver) {
         super(driver);
@@ -120,7 +125,7 @@ public class GlassPage extends MainPage {
         }
     }
 
-    public boolean checkWorkflowTransitionName(String workflowName) {
+    public boolean checkWorkflowName(String workflowName) {
         try {
             driver.findElement(By.xpath("//div[@id='glass-workflow-panel-title2' and contains(text(),'" + workflowName + "')]"));
             return true;
@@ -129,4 +134,25 @@ public class GlassPage extends MainPage {
             return false;
         }
     }
+
+    public List<String> checkWorkflowTransitionNames() {
+        try {
+            List<WebElement> elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(workflow));
+            List<String> actualTransitionNames = new ArrayList<String>();
+            for (WebElement element : elements) {
+                element.isDisplayed();
+                actualTransitionNames.add(element.getText());
+            }
+            return (actualTransitionNames);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
+
+
+//div[@id="glass-workflow-transitions"]/table/tbody/tr/td/span/b[local-name()]
+
+//div[@id="glass-workflow-transitions"]/table/tbody/tr/td/span/b[contains(text(),'Create')]
+
