@@ -31,7 +31,7 @@ public class WorkflowTest extends BaseTest {
         Assertions.assertTrue(glassPage.checkWorkflowName(name));
     }
 
-    @DisplayName("Verify that the workflow transition analysis appears in Glass documentation")
+    @DisplayName("Verify that the workflow transition data appear in Glass documentation")
     @ParameterizedTest
     @CsvFileSource(resources = "/workflowTest2_data.csv", numLinesToSkip = 1)
     public void workflowTest2(String page, String issueType, String transitions){
