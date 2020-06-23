@@ -22,8 +22,8 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-    @AfterAll
-    public static void tearDown() {
-        driver.quit();
-    }
+//    @AfterAll
+//    public static void tearDown() {
+//        driver.quit();
+//    }
 }

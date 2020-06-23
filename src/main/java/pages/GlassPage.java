@@ -42,12 +42,12 @@ public class GlassPage extends MainPage {
         componentsTab.click();
     }
 
-    public void navigateToVersionsTab(){
+    public void navigateToVersionsTab() {
         navigateToUrl(System.getenv("GLASS_PROJECTURL"));
         versionsTab.click();
     }
 
-    public boolean doesComponentExist(String componentName){
+    public boolean doesComponentExist(String componentName) {
         try {
             driver.findElement(By.xpath("//table[@id=\"components-table\"]//a[contains(text(),'" + componentName + "')]"));
             return true;
@@ -56,12 +56,13 @@ public class GlassPage extends MainPage {
         }
     }
 
-//    TODO: Add env to xpath
+    //    TODO: Add env to xpath
     public boolean isComponentAssigneePresent() {
         return wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//td[@class='components-table__name']"))).isDisplayed();
     }
-//TODO: func parameter
-    public boolean isComponentDescriptionPresent(String componentDescription){
+
+    //TODO: func parameter
+    public boolean isComponentDescriptionPresent(String componentDescription) {
         try {
             driver.findElement(By.xpath("//td[@class=\"glass-components-table__description\"]//div[contains(text(),'" + componentDescription + "')]"));
             return true;
@@ -70,7 +71,7 @@ public class GlassPage extends MainPage {
         }
     }
 
-    public boolean doesVersionExist(String componentVersion){
+    public boolean doesVersionExist(String componentVersion) {
         try {
             driver.findElement(By.xpath("//td[@class=\"versions-table__name\"]//div//a[contains(text(),'" + componentVersion + "')]"));
             return true;
@@ -79,7 +80,7 @@ public class GlassPage extends MainPage {
         }
     }
 
-    public boolean isVersionStartDatePresent(String versionStartDate){
+    public boolean isVersionStartDatePresent(String versionStartDate) {
         try {
             driver.findElement(By.xpath("//td[@class=\"versions-table__date_start\"]//div[contains(text(),'" + versionStartDate + "')]"));
             return true;
@@ -102,6 +103,29 @@ public class GlassPage extends MainPage {
             driver.findElement(By.xpath("//td[@class=\"versions-table__description\"]//div[contains(text(),'" + versionDescription + "')]"));
             return true;
         } catch (NoSuchElementException e) {
+            return false;
+        }
+    }
+
+    public void selectIssuetype(String issueType) {
+        try {
+            issueTypes.click();
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
+        try {
+            driver.findElement(By.xpath("//span[contains(text(),'" + issueType + "')]")).click();
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean checkWorkflowTransitionName(String workflowName) {
+        try {
+            driver.findElement(By.xpath("//div[@id='glass-workflow-panel-title2' and contains(text(),'" + workflowName + "')]"));
+            return true;
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
             return false;
         }
     }

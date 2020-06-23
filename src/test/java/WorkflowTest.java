@@ -22,8 +22,11 @@ public class WorkflowTest extends BaseTest {
     @DisplayName("Verify that the workflow appears in Glass documentation")
     @ParameterizedTest
     @CsvFileSource(resources = "/workflow_data.csv", numLinesToSkip = 1)
-    public void workflowTest1() {
-
+    public void workflowTest1(String page, String type, String name) {
+        projectPage.navigateToUrl(page);
+        glassPage.selectIssuetype(type);
+        Assertions.assertTrue(glassPage.checkWorkflowTransitionName(name));
     }
 }
+
 
