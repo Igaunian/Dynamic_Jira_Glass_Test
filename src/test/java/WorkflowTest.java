@@ -41,6 +41,17 @@ public class WorkflowTest extends BaseTest {
         List<String> returnedList = glassPage.checkWorkflowTransitionNames();
         Assertions.assertEquals(argumentList, returnedList);
     }
+
+    @DisplayName("Verify that the workflow transition analysis appears in Glass documentation")
+    @ParameterizedTest
+    @CsvFileSource(resources = "/workflowTest3_data.csv", numLinesToSkip = 1)
+    public void workflowTest3(String page, String issueType, String transitions){
+        projectPage.navigateToUrl(page);
+        glassPage.selectIssuetype(issueType);
+        List<String> argumentList = new ArrayList<String>(Arrays.asList(transitions.split(",")));
+        List<String> returnedList = glassPage.checkWorkflowAnalysis();
+        Assertions.assertEquals(argumentList, returnedList);
+    }
 }
 
 

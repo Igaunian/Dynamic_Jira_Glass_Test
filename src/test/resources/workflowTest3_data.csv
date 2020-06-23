@@ -1,0 +1,3 @@
+page,issueType,transitions
+/projects/JGDTP?selectedItem=com.codecanvas.glass:glass,Bug,"Create,To Do,In Progress,In Review,Done,All,All,All,All"
+/projects/JGDTP?selectedItem=com.codecanvas.glass:glass,Epic,"Create,OPEN,Kati,HUNGRY,This Way,WORKING ON IT,Finally,NOT HUNGRY,Jee...,DONE,Huh...,CLOSED"

@@ -36,7 +36,7 @@ public class GlassPage extends MainPage {
     private WebElement assignee;
 
     private By workflow = By.xpath("//div[@id=\"glass-workflow-transitions\"]/table/tbody/tr/td/span/b[local-name()]");
-
+    private By workflowA = By.xpath("//*[@id='workflow-designer1']//*[local-name()='svg']//*[local-name()='text']");
     public GlassPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
@@ -138,6 +138,21 @@ public class GlassPage extends MainPage {
     public List<String> checkWorkflowTransitionNames() {
         try {
             List<WebElement> elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(workflow));
+            List<String> actualTransitionNames = new ArrayList<String>();
+            for (WebElement element : elements) {
+                element.isDisplayed();
+                actualTransitionNames.add(element.getText());
+            }
+            return (actualTransitionNames);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public List<String> checkWorkflowAnalysis() {
+        try {
+            List<WebElement> elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(workflowA));
             List<String> actualTransitionNames = new ArrayList<String>();
             for (WebElement element : elements) {
                 element.isDisplayed();
