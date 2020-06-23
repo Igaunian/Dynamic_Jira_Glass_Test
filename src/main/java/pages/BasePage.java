@@ -17,6 +17,7 @@ public class BasePage {
     public void navigateToUrl() {
         driver.get(BASEURL);
     }
+
     public void navigateToUrl(String URL) {
         driver.get(BASEURL + URL);
     }

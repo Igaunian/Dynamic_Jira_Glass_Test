@@ -17,7 +17,7 @@ public class BaseTest {
 
     @BeforeAll
     public static void setUp() throws CsvException, IOException {
-        driver = WebDriverFactory.InitDriver(BROWSER);
+        driver = WebDriverFactory.initDriver(BROWSER);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }

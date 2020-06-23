@@ -15,7 +15,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 public class WebDriverFactory {
-    public static WebDriver InitDriver(String browserName, String gridURL, String gridPassword) throws MalformedURLException {
+    public static WebDriver initDriver(String browserName, String gridURL, String gridPassword) throws MalformedURLException {
         WebDriver driver = null;
         switch (browserName) {
             case "chrome":
@@ -34,7 +34,7 @@ public class WebDriverFactory {
         return driver;
     }
 
-    public static WebDriver InitDriver(String browserName) {
+    public static WebDriver initDriver(String browserName) {
         WebDriver driver = null;
         switch (browserName) {
             case "chrome":

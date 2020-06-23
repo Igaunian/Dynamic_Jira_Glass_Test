@@ -33,21 +33,25 @@ public class GlassComponentTest extends BaseTest {
     @CsvFileSource(resources = "/component_data.csv", numLinesToSkip = 1)
     public void viewComponentName(String componentName) {
         glassPage.navigateToComponentsTab();
-        Assertions.assertTrue(glassPage.doesComponentExists(componentName));
+        Assertions.assertTrue(glassPage.doesComponentExist(componentName));
     }
 
     @Test
     public void viewComponentsAssignee() {
         glassPage.navigateToComponentsTab();
-        Assertions.assertTrue(glassPage.doesComponentAssigneePresent());
+        Assertions.assertTrue(glassPage.isComponentAssigneePresent());
     }
 
     @ParameterizedTest
     @CsvFileSource(resources = "/component_data.csv", numLinesToSkip = 1)
     public void viewComponentDescription(String componentName, String componentDescription){
         glassPage.navigateToComponentsTab();
+<<<<<<< HEAD
 //        TODO: softassert
         Assertions.assertTrue(glassPage.doesComponentDescriptionPresent(componentDescription));
+=======
+        Assertions.assertTrue(glassPage.isComponentDescriptionPresent(componentDescription));
+>>>>>>> ea7c8016269965ee91201670126a7d77b87424ce
     }
 
     @AfterAll
