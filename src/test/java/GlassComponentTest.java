@@ -44,8 +44,9 @@ public class GlassComponentTest extends BaseTest {
 
     @ParameterizedTest
     @CsvFileSource(resources = "/component_data.csv", numLinesToSkip = 1)
-    public void viewComponentDescription(String componentDescription){
+    public void viewComponentDescription(String componentName, String componentDescription){
         glassPage.navigateToComponentsTab();
+//        TODO: softassert
         Assertions.assertTrue(glassPage.doesComponentDescriptionPresent(componentDescription));
     }
 
