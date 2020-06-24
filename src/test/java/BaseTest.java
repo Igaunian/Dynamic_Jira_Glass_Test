@@ -13,17 +13,18 @@ public class BaseTest {
     protected static final String GRID_URL = System.getenv("GRID_URL");
     protected static final String USERNAME = System.getenv("USERNAME");
     protected static final String PASSWORD = System.getenv("PASSWORD");
+    protected static final String GRID_PASSWORD = System.getenv("GRID_PASSWORD");
     protected static WebDriver driver;
 
     @BeforeAll
     public static void setUp() throws CsvException, IOException {
-        driver = WebDriverFactory.initDriver(BROWSER);
+        driver = WebDriverFactory.initDriver(BROWSER, GRID_URL, GRID_PASSWORD);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-//    @AfterAll
-//    public static void tearDown() {
-//        driver.quit();
-//    }
+    @AfterAll
+    public static void tearDown() {
+        driver.quit();
+    }
 }

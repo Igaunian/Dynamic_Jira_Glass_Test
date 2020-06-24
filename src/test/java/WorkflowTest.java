@@ -72,6 +72,11 @@ public class WorkflowTest extends BaseTest {
         glassPage.selectIssuetype(issueType);
         Assertions.assertEquals(validator, glassPage.getWorkflowValidator(transition));
     }
+
+    @AfterAll
+    public static void tearDown() {
+        driver.quit();
+    }
 }
 
 
