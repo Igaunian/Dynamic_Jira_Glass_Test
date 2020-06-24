@@ -34,7 +34,7 @@ public class WorkflowTest extends BaseTest {
     @DisplayName("Verify that the workflow transition data appear in Glass documentation")
     @ParameterizedTest
     @CsvFileSource(resources = "/workflowTest2_data.csv", numLinesToSkip = 1)
-    public void workflowTest2(String page, String issueType, String transitions){
+    public void workflowTest2(String page, String issueType, String transitions) {
         projectPage.navigateToUrl(page);
         glassPage.selectIssuetype(issueType);
         List<String> argumentList = new ArrayList<String>(Arrays.asList(transitions.split(",")));
@@ -45,11 +45,22 @@ public class WorkflowTest extends BaseTest {
     @DisplayName("Verify that the workflow transition analysis appears in Glass documentation")
     @ParameterizedTest
     @CsvFileSource(resources = "/workflowTest3_data.csv", numLinesToSkip = 1)
-    public void workflowTest3(String page, String issueType, String transitions){
+    public void workflowTest3(String page, String issueType, String transitions) {
         projectPage.navigateToUrl(page);
         glassPage.selectIssuetype(issueType);
         List<String> argumentList = new ArrayList<String>(Arrays.asList(transitions.split(",")));
         List<String> returnedList = glassPage.checkWorkflowAnalysis();
+        Assertions.assertEquals(argumentList, returnedList);
+    }
+
+    @DisplayName("The workflow transition counters match in Glass documentation")
+    @ParameterizedTest
+    @CsvFileSource(resources = "/workflowTest4_data.csv", numLinesToSkip = 1)
+    public void workflowTest4(String page, String issueType, String transitions, String counters) {
+        projectPage.navigateToUrl(page);
+        glassPage.selectIssuetype(issueType);
+        List<String> argumentList = new ArrayList<String>(Arrays.asList(counters.split(",")));
+        List<String> returnedList = glassPage.checkWorkFlowValidatorCounters(transitions);
         Assertions.assertEquals(argumentList, returnedList);
     }
 }

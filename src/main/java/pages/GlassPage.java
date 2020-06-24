@@ -37,6 +37,8 @@ public class GlassPage extends MainPage {
 
     private By workflow = By.xpath("//div[@id=\"glass-workflow-transitions\"]/table/tbody/tr/td/span/b[local-name()]");
     private By workflowA = By.xpath("//*[@id='workflow-designer1']//*[local-name()='svg']//*[local-name()='text']");
+    private By transitionCounters = By.xpath("//b[contains(text(),'To Do')]/ancestor::tr[@class=\"transition-row expanded\"]/following-sibling::tr[1]/descendant::aui-badge");
+
     public GlassPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
@@ -164,10 +166,22 @@ public class GlassPage extends MainPage {
             return null;
         }
     }
+
+    public List<String> checkWorkFlowValidatorCounters(String transition) {
+        driver.findElement(By.xpath("//b[contains(text(),'" + transition + "')]")).click();
+        try {
+            List<WebElement> elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//b[contains(text(),'" + transition + "')]/ancestor::tr[@class=\"transition-row expanded\"]/following-sibling::tr[1]/descendant::aui-badge")));
+            List<String> actualTransitionNames = new ArrayList<String>();
+            for (WebElement element : elements) {
+                element.isDisplayed();
+                actualTransitionNames.add(element.getText());
+            }
+            return (actualTransitionNames);
+        } catch (NoSuchElementException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }
 
-
-//div[@id="glass-workflow-transitions"]/table/tbody/tr/td/span/b[local-name()]
-
-//div[@id="glass-workflow-transitions"]/table/tbody/tr/td/span/b[contains(text(),'Create')]
 
