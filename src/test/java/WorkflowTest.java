@@ -63,6 +63,16 @@ public class WorkflowTest extends BaseTest {
         List<String> returnedList = glassPage.checkWorkFlowValidatorCounters(transitions);
         Assertions.assertEquals(argumentList, returnedList);
     }
+
+    @DisplayName("The validators of the workflow transition appear in Glass documentation")
+    @ParameterizedTest
+    @CsvFileSource(resources = "/workflowTest5_data.csv", numLinesToSkip = 1)
+    public void workflowTest5(String page, String issueType, String transition, String validator) {
+        projectPage.navigateToUrl(page);
+        glassPage.selectIssuetype(issueType);
+        Assertions.assertEquals(validator, glassPage.getWorkflowValidator(transition));
+    }
 }
+
 
 
