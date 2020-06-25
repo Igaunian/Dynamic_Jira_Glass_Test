@@ -44,13 +44,13 @@ public class GlassPage extends MainPage {
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
     }
 
-    public void navigateToComponentsTab() {
-        navigateToUrl(System.getenv("GLASS_PROJECTURL"));
+    public void navigateToComponentsTab(String glassProjectUrl) {
+        navigateToUrl(glassProjectUrl);
         componentsTab.click();
     }
 
-    public void navigateToVersionsTab() {
-        navigateToUrl(System.getenv("GLASS_PROJECTURL"));
+    public void navigateToVersionsTab(String glassProjectUrl) {
+        navigateToUrl(glassProjectUrl);
         versionsTab.click();
     }
 
