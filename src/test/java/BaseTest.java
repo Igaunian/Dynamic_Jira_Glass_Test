@@ -14,6 +14,11 @@ public class BaseTest {
     protected static final String USERNAME = System.getenv("USERNAME");
     protected static final String PASSWORD = System.getenv("PASSWORD");
     protected static final String GRID_PASSWORD = System.getenv("GRID_PASSWORD");
+    protected static final String ADMIN_USERNAME = System.getenv("ADMIN_USERNAME");
+    protected static final String ADMIN_PASSWORD = System.getenv("ADMIN_PASSWORD");
+    protected static final String PROJECT_ADMIN_USERNAME = System.getenv("PROJECT_ADMIN_USERNAME");
+    protected static final String PROJECT_ADMIN_PASSWORD = System.getenv("PROJECT_ADMIN_PASSWORD");
+
     protected static WebDriver driver;
 
     @BeforeAll

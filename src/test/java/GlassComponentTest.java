@@ -52,7 +52,7 @@ public class GlassComponentTest extends BaseTest {
 
     @AfterAll
     public static void teardown() {
-//        projectPage.deleteComponent();
+        projectPage.deleteComponent();
     }
 }
 
