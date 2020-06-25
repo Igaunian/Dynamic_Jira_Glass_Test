@@ -13,6 +13,10 @@ public class BaseTest {
     protected static final String GRID_URL = System.getenv("GRID_URL");
     protected static final String USERNAME = System.getenv("USERNAME");
     protected static final String PASSWORD = System.getenv("PASSWORD");
+    protected static final String ADMIN_USERNAME = System.getenv("ADMIN_USERNAME");
+    protected static final String ADMIN_PASSWORD = System.getenv("ADMIN_PASSWORD");
+    protected static final String PROJECT_ADMIN_USERNAME = System.getenv("PROJECT_ADMIN_USERNAME");
+    protected static final String PROJECT_ADMIN_PASSWORD = System.getenv("PROJECT_ADMIN_PASSWORD");
     protected static WebDriver driver;
 
     @BeforeAll
@@ -22,8 +26,8 @@ public class BaseTest {
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
     }
 
-//    @AfterAll
-//    public static void tearDown() {
-//        driver.quit();
-//    }
+    @AfterAll
+    public static void tearDown() {
+        driver.quit();
+    }
 }

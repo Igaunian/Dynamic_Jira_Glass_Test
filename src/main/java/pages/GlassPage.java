@@ -188,6 +188,19 @@ public class GlassPage extends MainPage {
         driver.findElement(By.xpath("//b[contains(text(),'" + transition + "')]/ancestor::tr[@class=\"transition-row expanded\"]/following-sibling::tr[1]/descendant::ul/descendant::a[contains(text(),'Validators')]")).click();
         return driver.findElement(By.xpath("//div[contains(@id,'glass-transitions-validators-panel') and @aria-hidden='false']/descendant::b")).getText();
     }
+
+    public void clickSchemeTab() {
+        schemesTab.click();
+    }
+
+    public boolean isChangeButtonPresent(String editPage) {
+        try {
+            driver.findElement(By.xpath("//a[contains(@href,'" + editPage + "')]\n"));
+            return true;
+        } catch (NoSuchElementException e){
+            return false;
+        }
+    }
 }
 
 
