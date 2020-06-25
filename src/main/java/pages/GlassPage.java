@@ -9,11 +9,12 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+
 import java.util.ArrayList;
 import java.util.List;
 
+
 public class GlassPage extends MainPage {
-    private static final String componentAssignee = System.getenv("COMPONENT_ASSIGNEE");
     @FindBy(xpath = "//li[@id='glass-workflow-nav']/a")
     private WebElement issueTypes;
     @FindBy(xpath = "//*[@data-issue-type='Improvement']/a")
@@ -32,12 +33,25 @@ public class GlassPage extends MainPage {
     private WebElement versionsTab;
     @FindBy(xpath = "//a[text()='Schemes']")
     private WebElement schemesTab;
+    @FindBy(xpath = "//a[@data-target='permissions']")
+    private WebElement permissionTab;
+    @FindBy(xpath = "//span[text()='Permission Matrix ']/following-sibling::a")
+    private WebElement permissionSettingsQuickLink;
+    @FindBy(xpath = "//span[text()='Components ']/following-sibling::a")
+    private WebElement componentsSettingsQuickLink;
+    @FindBy(xpath = "//span[text()='Schemes ']/following-sibling::a")
+    private WebElement schemeSettingsQuickLink;
+    @FindBy(xpath = "//span[text()='Workflow ']/following-sibling::a")
+    private WebElement workflowSettingsQuickLink;
     @FindBy(xpath = "//td[@class='components-table__name']/following-sibling::td[contains(text(),'Project Lead')]")
     private WebElement assignee;
+
 
     private By workflow = By.xpath("//div[@id=\"glass-workflow-transitions\"]/table/tbody/tr/td/span/b[local-name()]");
     private By workflowA = By.xpath("//*[@id='workflow-designer1']//*[local-name()='svg']//*[local-name()='text']");
     private By transitionCounters = By.xpath("//b[contains(text(),'To Do')]/ancestor::tr[@class=\"transition-row expanded\"]/following-sibling::tr[1]/descendant::aui-badge");
+
+
 
     public GlassPage(WebDriver driver) {
         super(driver);
@@ -193,6 +207,54 @@ public class GlassPage extends MainPage {
         schemesTab.click();
     }
 
+    public void clickPermissionTab() {
+        permissionTab.click();
+    }
+
+    public boolean clickPermissionSettingsLink(){
+        try{
+            permissionSettingsQuickLink.click();
+            return true;
+        }
+        catch (NoSuchElementException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean clickComponentSettingsLink(){
+        try{
+            componentsSettingsQuickLink.click();
+            return true;
+        }
+        catch (NoSuchElementException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean clickSchemeSettingsLink(){
+        try{
+            schemeSettingsQuickLink.click();
+            return true;
+        }
+        catch (NoSuchElementException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean clickWorkflowSettingsQuickLink(){
+        try{
+            workflowSettingsQuickLink.click();
+            return true;
+        }
+        catch (NoSuchElementException e){
+            e.printStackTrace();
+            return false;
+        }
+    }
+
     public boolean isChangeButtonPresent(String editPage) {
         try {
             driver.findElement(By.xpath("//a[contains(@href,'" + editPage + "')]\n"));
@@ -201,6 +263,8 @@ public class GlassPage extends MainPage {
             return false;
         }
     }
+
+
 }
 
 

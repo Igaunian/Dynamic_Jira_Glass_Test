@@ -1,0 +1,4 @@
+username,password,projectPage
+ADMIN_USERNAME,ADMIN_PASSWORD,/projects/JGDTP?selectedItem=com.codecanvas.glass:glass,able
+PROJECT_ADMIN_USERNAME,PROJECT_ADMIN_PASSWORD,/projects/JGDTP?selectedItem=com.codecanvas.glass:glass,able
+DUMB_USERNAME,DUMB_PASSWORD,/projects/JGDTP?selectedItem=com.codecanvas.glass:glass,unable
