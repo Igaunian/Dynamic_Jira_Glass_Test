@@ -18,18 +18,18 @@ public class PermissionTest extends BaseTest {
         projectPage = new ProjectPage(driver);
     }
 
-    @DisplayName("The schemes editing link works according to the permissions in Glass documentation\n")
+    @DisplayName("The schemes editing link works according to the permissions in Glass documentation")
     @ParameterizedTest
     @CsvFileSource(resources = "/schemesEditingPermissionTest_data.csv", numLinesToSkip = 1)
-    public void schemeLinkWorkCheck(String username, String password, String page, String editPage, String expected) {
-        projectPage.login(System.getenv(username), System.getenv(password));
-        projectPage.navigateToUrl(page);
+    public void schemeLinkWorkCheck(String username, String password, String projectPage, String editPage, String expectedResult) {
+        PermissionTest.projectPage.login(System.getenv(username), System.getenv(password));
+        PermissionTest.projectPage.navigateToUrl(projectPage);
         glassPage.clickSchemeTab();
-        switch (expected) {
-            case "false":
+        switch (expectedResult) {
+            case "unable":
                 Assertions.assertFalse(glassPage.isChangeButtonPresent(editPage));
                 break;
-            case "true":
+            case "able":
                 Assertions.assertTrue(glassPage.isChangeButtonPresent(editPage));
                 break;
         }
