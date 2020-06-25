@@ -63,16 +63,16 @@ public class ProjectPage extends MainPage {
         PageFactory.initElements(new AjaxElementLocatorFactory(driver, 10), this);
     }
 //TODO override less parameter
-    public void createComponent(String componentName, String componentDescription, String componentAssignee){
-        navigateToComponentsPage();
+    public void createComponent(String ProjectComponentURL, String componentName, String componentDescription, String componentAssignee){
+        navigateToComponentsPage(ProjectComponentURL);
         componentNameInputField.sendKeys(componentName);
         componentDescriptionInputField.sendKeys(componentDescription);
         componentAssigneeInputField.sendKeys(componentAssignee);
         addComponentButton.click();
     }
 
-    public void deleteComponent(){
-        navigateToComponentsPage();
+    public void deleteComponent(String ProjectComponentURL){
+        navigateToComponentsPage(ProjectComponentURL);
         actionButton.click();
         deleteComponentButton.click();
         deleteForSure.click();
@@ -88,8 +88,8 @@ public class ProjectPage extends MainPage {
         }
     }
 
-    public void navigateToComponentsPage() {
-        navigateToUrl(System.getenv("PROJECT_COMPONENTS_URL"));
+    public void navigateToComponentsPage(String projectComponentURL) {
+        navigateToUrl(projectComponentURL);
     }
 
     public void navigateToVersionsPage(){
