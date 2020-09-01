@@ -25,7 +25,7 @@ public class ProjectPage extends MainPage {
     @FindBy(xpath = "//input[@id='assigneeType-field']")
     private WebElement componentAssigneeInputField;
 
-    @FindBy(xpath = "//div[@class=\"components-add__confirm\"]//button[@class='aui-button aui-button-primary']")
+    @FindBy(xpath = "//div[@class='components-add__confirm']//button[@class='aui-button aui-button-primary']")
     private WebElement addComponentButton;
 
     @FindBy(xpath = "//a[@class='component-delete-dialog deletecomponent_link']")
