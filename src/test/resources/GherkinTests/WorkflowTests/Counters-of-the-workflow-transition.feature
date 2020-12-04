@@ -1,9 +1,9 @@
 
-Feature: The workflow transition counters match in Glass documentation
+Feature: The counters of the workflow transition match in Glass documentation
   Scenario Outline: the workflow transition data appear on Glass
     Given I am on project's "<Glass documentation page>"
     When I choose the "<issue type>"
-#    And I click on the "<transition>" name
+    And I click on the workflow "<transition>" name in the Workflow Transitions table
     Then the "<transition>" "<counters>" match in the Workflow Transitions table
 
     Examples:

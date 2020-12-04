@@ -1,5 +1,5 @@
 
-Feature: The workflow transition analysis appears in Glass documentation
+Feature: The analysis of the workflow transition appears in Glass documentation
   Scenario Outline: the workflow transitions appear on Glass
     Given I am on project's "<Glass documentation page>"
     When I choose the "<issue type>"

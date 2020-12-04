@@ -1,3 +1,5 @@
+package tests;
+
 import com.opencsv.CSVReaderHeaderAware;
 import com.opencsv.exceptions.CsvException;
 import org.junit.jupiter.api.AfterAll;

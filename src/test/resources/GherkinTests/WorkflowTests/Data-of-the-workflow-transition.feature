@@ -1,5 +1,5 @@
 
-Feature: The workflow transition data appear in Glass documentation
+Feature: The data of the workflow transition appear in Glass documentation
   Scenario Outline: the workflow transition data appear on Glass
     Given I am on project's "<Glass documentation page>"
     When I choose the "<issue type>"
@@ -8,4 +8,4 @@ Feature: The workflow transition data appear in Glass documentation
     Examples:
       |Glass documentation page|issue type|transition data|
       |/projects/JGDTP?selectedItem=com.codecanvas.glass:glass|Bug|Create,To Do,In Progress,In Review,Done|
-      |/projects/JGDTP?selectedItem=com.codecanvas.glass:glass|Epic|Create,Kati,This way,Finally,Jee...,Huh...|
+#      |/projects/JGDTP?selectedItem=com.codecanvas.glass:glass|Epic|Create,Kati,This way,Finally,Jee...,Huh...|

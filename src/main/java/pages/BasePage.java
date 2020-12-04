@@ -14,7 +14,7 @@ public class BasePage {
         this.wait = new WebDriverWait(this.driver, TIMEOUT);
     }
 
-    public void navigateToUrl() {
+    public void navigateToBaseUrl() {
         driver.get(BASEURL);
     }
 

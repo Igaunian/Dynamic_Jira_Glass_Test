@@ -30,29 +30,29 @@ public class WorkflowSteps extends BaseTestBdd {
 
     @Then("the workflow {string} appear in the Workflow Transitions table")
     public void theWorkflowSAppearInTheWorkflowTransitionsTable(String data) {
-        List<String> argumentList = new ArrayList<String>(Arrays.asList(data.split(",")));
+        List<String> argumentList = new ArrayList<>(Arrays.asList(data.split(",")));
         List<String> returnedList = glassPage.checkWorkflowTransitionNames();
         Assertions.assertEquals(argumentList, returnedList);
     }
 
-// TODO: check the correct data
+// TODO: fix the waiting
     @Then("the workflow transition {string} appear in the Workflow Transitions table")
     public void theWorkflowAnalysisAppearInTheWorkflowTransitionsTable(String data) {
-        List<String> argumentList = new ArrayList<String>(Arrays.asList(data.split(",")));
+        List<String> argumentList = new ArrayList<>(Arrays.asList(data.split(",")));
         List<String> returnedList = glassPage.checkWorkflowAnalysis();
         Assertions.assertEquals(argumentList, returnedList);
     }
 
     @Then("the {string} {string} match in the Workflow Transitions table")
     public void theTransitionMatchInTheWorkflowTransitionsTable(String transitions, String counters) {
-        List<String> argumentList = new ArrayList<String>(Arrays.asList(counters.split(",")));
+        List<String> argumentList = new ArrayList<>(Arrays.asList(counters.split(",")));
         List<String> returnedList = glassPage.checkWorkFlowValidatorCounters(transitions);
         Assertions.assertEquals(argumentList, returnedList);
     }
 
     @Then("the {string} validators {string} are listed in the table")
     public void theValidatorsAreListedInTheTable(String transition, String validators) {
-        Assertions.assertEquals(validators, glassPage.getWorkflowValidator(transition));
+        Assertions.assertEquals(validators, glassPage.getWorkflowValidators(transition));
     }
 
     @Then("the Show Transition Labels checkbox appears above the workflow diagram")
@@ -97,7 +97,7 @@ public class WorkflowSteps extends BaseTestBdd {
 
     @Then("the {string} third party validators {string} are listed in the table")
     public void theThirdPartyValidatorsAreListedInTheTable(String transition, String validators) {
-        Assertions.assertEquals(validators, glassPage.getWorkflowValidator(transition));
+        Assertions.assertEquals(validators, glassPage.getWorkflowValidators(transition));
     }
 
     @Then("the {string} third party conditions {string} are listed in the table")

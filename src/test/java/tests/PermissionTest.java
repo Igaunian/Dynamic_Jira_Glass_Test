@@ -1,3 +1,5 @@
+package tests;
+
 import com.opencsv.exceptions.CsvException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
@@ -6,7 +8,6 @@ import pages.GlassPage;
 import pages.ProjectPage;
 
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class PermissionTest extends BaseTest {
     public static GlassPage glassPage;
@@ -14,7 +15,7 @@ public class PermissionTest extends BaseTest {
 
     @BeforeEach
     public void initEach() throws CsvException, IOException {
-//        BaseTest.setUp();
+//        tests.BaseTest.setUp();
         glassPage = new GlassPage(driver);
         projectPage = new ProjectPage(driver);
     }

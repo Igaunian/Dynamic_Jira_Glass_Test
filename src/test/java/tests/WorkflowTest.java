@@ -1,3 +1,5 @@
+package tests;
+
 import com.opencsv.exceptions.CsvException;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;

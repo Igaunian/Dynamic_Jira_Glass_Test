@@ -48,7 +48,7 @@ public class MainPage extends BasePage {
     }
 
     public void login(String username, String password) {
-        navigateToUrl();
+        navigateToBaseUrl();
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath("//input[@id=\"login-form-username\"]")));
         enterUsername(username);
         enterPassword(password);

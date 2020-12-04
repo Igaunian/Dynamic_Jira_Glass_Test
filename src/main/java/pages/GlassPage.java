@@ -9,7 +9,6 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.pagefactory.AjaxElementLocatorFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,6 +44,8 @@ public class GlassPage extends MainPage {
     private WebElement workflowSettingsQuickLink;
     @FindBy(xpath = "//td[@class='components-table__name']/following-sibling::td[contains(text(),'Project Lead')]")
     private WebElement assignee;
+    @FindBy(id = "show-transition-labels")
+    private WebElement transitionLabelsCheckBox;
 
 
     private By workflow = By.xpath("//div[@id=\"glass-workflow-transitions\"]/table/tbody/tr/td/span/b[local-name()]");
@@ -182,7 +183,7 @@ public class GlassPage extends MainPage {
     }
 
     public List<String> checkWorkFlowValidatorCounters(String transition) {
-        driver.findElement(By.xpath("//b[contains(text(),'" + transition + "')]")).click();
+//        driver.findElement(By.xpath("//b[contains(text(),'" + transition + "')]")).click();
         try {
             List<WebElement> elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath("//b[contains(text(),'" + transition + "')]/ancestor::tr[@class=\"transition-row expanded\"]/following-sibling::tr[1]/descendant::aui-badge")));
             List<String> actualTransitionNames = new ArrayList<String>();
@@ -199,8 +200,8 @@ public class GlassPage extends MainPage {
 
     public String getWorkflowValidator(String transition) {
         driver.findElement(By.xpath("//b[contains(text(),'" + transition + "')]")).click();
-        driver.findElement(By.xpath("//b[contains(text(),'" + transition + "')]/ancestor::tr[@class=\"transition-row expanded\"]/following-sibling::tr[1]/descendant::ul/descendant::a[contains(text(),'Validators')]")).click();
-        return driver.findElement(By.xpath("//div[contains(@id,'glass-transitions-validators-panel') and @aria-hidden='false']/descendant::b")).getText();
+        driver.findElement(By.xpath("//b[contains(text(),'" + transition + "')]/ancestor::tr[@class='transition-row expanded']/following-sibling::tr[1]/descendant::ul/descendant::a[contains(text(),'Validators')]")).click();
+        return driver.findElement(By.xpath("//div[contains(@id,'glass-transitions-validators-panel') and @aria-hidden='false']/descendant::li")).getText();
     }
 
     public void clickSchemeTab() {
@@ -264,7 +265,57 @@ public class GlassPage extends MainPage {
         }
     }
 
+    public boolean isCheckBoxPresent() {
+        try {
+            return transitionLabelsCheckBox != null;
+        } catch (NoSuchElementException e){
+            return false;
+        }
+    }
 
+    public void clickWorkflowTransitionName(String transition) {
+        try {
+            driver.findElement(By.xpath(String.format("//tr[descendant::b[contains(text(), '%s')]]/td[1]", transition))).click();
+        } catch (NoSuchElementException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void clickTabInWorkflowTransitionTable(String transition, String tabName) {
+        driver.findElement(By.xpath("//b[contains(text(),'" + transition + "')]/ancestor::tr[@class='transition-row expanded']/following-sibling::tr[1]/descendant::ul/descendant::a[contains(text(),'" + tabName + "')]")).click();
+    }
+
+    public String getPostFunctions(String transition) {
+        List<WebElement> postFunctionList = driver.findElements(By.xpath(String.format("//tr[descendant::b[contains(text(), '%s')]]/following-sibling::tr[1]//div[contains(@id, 'glass-transitions-postfunctions-panel')]//li", transition)));
+        List<String> functions = new ArrayList<>();
+
+        for (WebElement postFunction : postFunctionList) {
+            functions.add(postFunction.getText());
+        }
+
+        return String.join(", ", functions);
+    }
+
+    public String getConditions(String transition) {
+        List<WebElement> conditionList = driver.findElements(By.xpath(String.format("//tr[descendant::b[contains(text(), '%s')]]/following-sibling::tr[1]//div[contains(@id, 'glass-transitions-conditions-panel')]//li", transition)));
+        List<String> conditions = new ArrayList<>();
+
+        for (WebElement condition : conditionList) {
+            conditions.add(condition.getText());
+        }
+
+        return String.join(", ", conditions);
+    }
+
+    public String getConditionGroup(String transition) {
+        WebElement conditionGroup = driver.findElement(By.xpath(String.format("//tr[descendant::b[contains(text(), '%s')]]/following-sibling::tr[1]//div[contains(@id, 'glass-transitions-conditions-panel')]//div[@class='criteria-item']/span", transition)));
+
+        return conditionGroup.getText();
+    }
+
+    public String getWorkflowValidators(String transition) {
+        return driver.findElement(By.xpath("//div[contains(@id,'glass-transitions-validators-panel') and @aria-hidden='false']/descendant::li")).getText();
+    }
 }
 
 
