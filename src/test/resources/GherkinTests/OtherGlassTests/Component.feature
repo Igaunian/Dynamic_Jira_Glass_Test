@@ -1,8 +1,8 @@
 Feature: The component appears in Glass documentation
   Scenario Outline: the component appears on Glass
-    Given I am on project's <Components page>
-    And I am on project's <Glass documentation page>
-    Then the <component name> appears on Components page and on the Glass documentation page
+    Given I am on project's "<Components page>"
+    And I am on project's "<Glass documentation page>"
+    Then the "<component name>" appears on Components page and on the Glass documentation page
 
     Examples:
       | Components page                                                                                                          | Glass documentation page                                                                    | component name |
