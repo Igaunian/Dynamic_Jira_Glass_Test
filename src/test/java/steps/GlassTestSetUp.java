@@ -3,7 +3,6 @@ package steps;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import pages.GlassPage;
-import pages.ProjectPage;
 import tests.BaseTestBdd;
 import util.WebDriverFactory;
 
@@ -15,12 +14,11 @@ public class GlassTestSetUp extends BaseTestBdd {
     public static void setUp() {
         driver = WebDriverFactory.initDriver(BROWSER);
         glassPage = new GlassPage(driver);
-        projectPage = new ProjectPage(driver);
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
-        projectPage.login(USERNAME, PASSWORD);
+        glassPage.login(USERNAME, PASSWORD);
     }
 
     @After

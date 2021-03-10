@@ -15,7 +15,7 @@ public class WorkflowSteps extends BaseTestBdd {
 
     @Given("I am on project's {string}")
     public void iAmOnProjectS(String url) {
-        projectPage.navigateToUrl(url);
+        glassPage.navigateToUrl(url);
     }
 
     @When("I choose the {string}")
@@ -28,16 +28,15 @@ public class WorkflowSteps extends BaseTestBdd {
         Assertions.assertTrue(glassPage.checkWorkflowName(name));
     }
 
-    @Then("the workflow {string} appear in the Workflow Transitions table")
-    public void theWorkflowSAppearInTheWorkflowTransitionsTable(String data) {
+    @Then("the workflow {string} {string} appear in the Workflow Transitions table")
+    public void theWorkflowSAppearInTheWorkflowTransitionsTable(String transition, String data) {
         List<String> argumentList = new ArrayList<>(Arrays.asList(data.split(",")));
-        List<String> returnedList = glassPage.checkWorkflowTransitionNames();
+        List<String> returnedList = glassPage.checkWorkflowTransitionData(transition);
         Assertions.assertEquals(argumentList, returnedList);
     }
 
-// TODO: fix the waiting
-    @Then("the workflow transition {string} appear in the Workflow Transitions table")
-    public void theWorkflowAnalysisAppearInTheWorkflowTransitionsTable(String data) {
+    @Then("the workflow {string} appears in the Workflow Transitions table")
+    public void theWorkflowTransitionAppearsInTheWorkflowTransitionsTable(String data) {
         List<String> argumentList = new ArrayList<>(Arrays.asList(data.split(",")));
         List<String> returnedList = glassPage.checkWorkflowAnalysis();
         Assertions.assertEquals(argumentList, returnedList);
