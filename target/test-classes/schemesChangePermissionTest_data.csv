@@ -1,4 +1,0 @@
-username,password,projectPage,editPage,expected
-ADMIN_USERNAME,ADMIN_PASSWORD,/projects/JGDTP?selectedItem=com.codecanvas.glass:glass,/secure/admin/SelectIssueTypeSchemeForProject!default.jspa?projectId=10104,able
-PROJECT_ADMIN_USERNAME,PROJECT_ADMIN_PASSWORD,/projects/JGDTP?selectedItem=com.codecanvas.glass:glass,/secure/admin/SelectIssueTypeSchemeForProject!default.jspa?projectId=10104,unable
-DUMB_USERNAME,DUMB_PASSWORD,/projects/JGDTP?selectedItem=com.codecanvas.glass:glass,/secure/admin/SelectIssueTypeSchemeForProject!default.jspa?projectId=10104,unable
